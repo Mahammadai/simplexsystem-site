@@ -95,8 +95,13 @@
 <body>
   <div class="card">
     <div class="logo">
-      <img src="logo.png" alt="Simplex System Logo">
-    </div>
+  <!-- Root-dan oxusun və fallback etsin -->
+  <img src="/logo.png"
+       alt="Simplex System Logo"
+       height="120"
+       style="width:auto; display:block; margin:0 auto 20px"
+       onerror="this.onerror=null; this.src='https://bimi-logo-49q.pages.dev/logo.svg';">
+</div>
     <h1>Xəstəxana idarəetməsi</h1>
     <h2>üçün yeni dövr başlayır</h2>
     <p>Gələcək buradadır — sadəcə gözləyin.</p>
