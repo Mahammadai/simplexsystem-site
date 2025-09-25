@@ -1,165 +1,76 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simplex System - Texniki Baxım</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplex System — Yeni dövr başlayır</title>
+  <meta name="description" content="Xəstəxana idarəetməsi üçün yeni dövr başlayır. Gələcək buradadır — sadəcə gözləyin.">
+  <link rel="icon" href="https://bimi-logo-49q.pages.dev/logo.svg">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #27DEBF, #4f46e5);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      color: #0f172a;
+    :root{
+      --ink:#0f172a; --muted:#475569; --brand:#27DEBF;
+      --bg: linear-gradient(135deg,#22d3ee 0%,#4f46e5 60%,#7c3aed 100%);
     }
-
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      max-width: 500px;
-      width: 90%;
-      margin: 40px auto;
-      padding: 24px;
-      position: relative;
-      z-index: 1;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink); background:var(--bg); display:grid; place-items:center;
     }
-
-    h1 {
-      margin: 0 0 8px 0;
-      font-size: 24px;
+    .card{
+      width:min(680px,92vw);
+      background:#ffffffee; border:1px solid #e9eef5; border-radius:20px;
+      padding:28px 26px; text-align:center; box-shadow:0 18px 60px rgba(3,7,18,.15);
+      backdrop-filter:saturate(160%) blur(6px);
+      animation:pop .5s ease-out both;
     }
-    h3.section-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin: 20px 0 12px 0;
-      color: #0f172a;
+    @keyframes pop{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+    h1{margin:4px 0 10px; font-size:clamp(26px,5vw,36px); line-height:1.2; font-weight:900}
+    p.sub{margin:0 0 18px; color:var(--muted); font-size:clamp(14px,2.4vw,17px)}
+    .cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+    .btn{
+      appearance:none; border:0; cursor:pointer; font-weight:800; border-radius:12px;
+      padding:12px 16px; text-decoration:none; display:inline-block
     }
-    p {
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .list { list-style: none; padding: 0; margin: 0; }
-    .list li { margin-bottom: 10px; font-size: 16px; }
-    .note { color: #64748b; font-size: 14px; margin-left: 6px; }
-
-    .progress {
-      height: 6px;
-      border-radius: 8px;
-      margin: 20px 0;
-      background: #e5e7eb;
-      overflow: hidden;
-    }
-    .progress span {
-      display: block;
-      height: 100%;
-      width: 70%;
-      background: linear-gradient(90deg, #06b6d4, #4f46e5);
-    }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .buttons a {
-      flex: 1;
-      text-align: center;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .buttons a.primary {
-      background: #0ea5e9;
-      color: #fff;
-    }
-    .buttons a.secondary {
-      background: #f1f5f9;
-      color: #0f172a;
-    }
-
-    .contact {
-      margin-top: 20px;
-      font-size: 16px;
-    }
-    .contact a {
-      color: #27DEBF;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .contact a:hover {
-      color: #1aa690;
-      text-decoration: underline;
-    }
-
-    /* Background icons */
-    .bg-icons {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .45;
-    }
-    .icon {
-      position: absolute;
-      width: 80px; height: 80px;
-      fill: #ffffffcc;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,.25));
-    }
-    .icon.flask { top: 10%; left: 10%; }
-    .icon.heart { top: 30%; right: 10%; }
-    .icon.chart { bottom: 20%; left: 20%; }
-
-    /* Mobile responsive */
-    @media (max-width: 600px) {
-      h1 { font-size: 20px; text-align: center; }
-      h3.section-title { font-size: 18px; text-align: center; }
-      p { font-size: 14px; text-align: center; }
-      .list li { font-size: 14px; line-height: 1.4; }
-      .note { display: block; margin-left: 0; font-size: 13px; }
-      .buttons { flex-direction: column; }
-      .contact { font-size: 14px; text-align: center; }
+    .btn.primary{background:#0ea5e9; color:#002133; box-shadow:0 10px 22px rgba(14,165,233,.35)}
+    .btn.primary:hover{transform:translateY(-1px)}
+    .mail{display:block; margin-top:14px; color:#27DEBF; font-weight:900; text-decoration:none}
+    .mail:hover{text-decoration:underline}
+    .logo{display:flex; justify-content:center; gap:10px; align-items:center; margin-bottom:8px; opacity:.95}
+    .logo img{width:28px; height:28px}
+    .badge{display:inline-block; margin-bottom:10px; padding:6px 12px; border-radius:999px;
+      background:#ecfeff; border:1px solid #cffafe; color:#0b7285; font-size:12px; font-weight:800}
+    footer{position:fixed; left:0; right:0; bottom:10px; text-align:center; color:#ffffffcc; font-size:12px}
+    @media (prefers-color-scheme: dark){
+      body{color:#e5e7eb}
+      .card{background:#0b1220dd; border-color:#233047}
+      .mail{color:#34f0d6}
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Simplex System</h1>
-    <p>Saytımızda hazırda <b>texniki baxım və modernləşdirmə</b> işləri aparılır. Daha sürətli, daha təhlükəsiz və funksional təcrübə üçün interfeysi yeniləyirik. Tezliklə geri dönəcəyik!</p>
-
-    <h3 class="section-title">🔹 Simplex System sizə nə vəd edir?</h3>
-    <ul class="list">
-      <li>🧪 Tibbi cihazlarla avtomatik inteqrasiya 
-        <span class="note">— Analiz nəticələri dəqiq şəkildə, dərhal sistemə düşür</span></li>
-      <li>🩺 Həkim fəaliyyət göstəriciləri 
-        <span class="note">— Əsas göstəricilərə görə maaş və bonus</span></li>
-      <li>📊 Rəhbərlik üçün analitik hesabatlar 
-        <span class="note">— Maliyyə, şöbə məhsuldarlığı, xərc optimizasiyası</span></li>
-    </ul>
-
-    <div class="progress"><span></span></div>
-
-    <div class="buttons">
-      <a href="mailto:office@simplexsystem.az" class="primary">Bizə yazın</a>
-      <a href="#" class="secondary">Status bildirişləri</a>
+  <main class="card" role="main">
+    <div class="logo">
+      <img src="https://bimi-logo-49q.pages.dev/logo.svg" alt="">
+      <strong>Simplex System</strong>
     </div>
 
-    <!-- Əlaqə blokunu iri və aydın -->
-    <div class="contact">
-      Əlaqə: <a href="mailto:office@simplexsystem.az">office@simplexsystem.az</a>
-    </div>
-  </div>
+    <span class="badge">Tezliklə</span>
+    <h1>Xəstəxana idarəetməsi üçün yeni dövr başlayır.</h1>
+    <p class="sub">Gələcək buradadır — sadəcə gözləyin.</p>
 
-  <!-- Background icons -->
-  <svg class="bg-icons" xmlns="http://www.w3.org/2000/svg">
-    <circle class="icon flask" cx="40" cy="40" r="40"/>
-    <rect class="icon heart" x="0" y="0" width="80" height="80" rx="20"/>
-    <polygon class="icon chart" points="0,80 40,0 80,80"/>
-  </svg>
+    <div class="cta">
+      <a class="btn primary" href="mailto:office@simplexsystem.az?subject=İlk%20xəbərdar%20olmaq%20istəyirəm">
+        İlk xəbərdar ol
+      </a>
+      <!-- İstəsən ikinci düymə də qoya bilərsən
+      <a class="btn" href="#">Daha sonra</a>
+      -->
+    </div>
+
+    <a class="mail" href="mailto:office@simplexsystem.az">office@simplexsystem.az</a>
+  </main>
+
+  <footer>© Simplex System</footer>
 </body>
 </html>
