@@ -15,26 +15,23 @@
       align-items:center;
       justify-content:center;
     }
-    /* KART — sabit ölçü + görünən fon və kölgə */
-.card{
+    .card {
   width: min(560px, 92vw);
-  padding: 36px 28px;
+  padding: 28px 24px 32px;   /* yuxarı boşluğu azaltdım */
   border-radius: 20px;
-  background: rgba(13, 27, 42, .92);          /* tünd, şəffaf fon */
+  background: rgba(13, 27, 42, .92);
   border: 1px solid rgba(255,255,255,.05);
   box-shadow: 0 18px 48px rgba(0,0,0,.35);
   text-align: center;
   color: #fff;
-  overflow: hidden;                           /* loqo kənara çıxmasın */
-  /* istəsən ölçünü daha sabit saxlayım: */
-  /* min-height: 520px; */
+  overflow: hidden;
 }
 .logo img {
-  width: 70%;              /* kartın 70%-i qədər böyüsün */
-  max-width: 280px;        /* maksimum limit */
-  height: auto;            /* nisbət qorunsun */
+  width: 160px;        /* kartın içində ideal ölçü */
+  max-width: 60%;
+  height: auto;
+  margin: 12px auto 24px;   /* yuxarı boşluğu az, aşağı daha balanslı */
   display: block;
-  margin: 0 auto 32px;     /* mərkəzləşdir və yazılardan məsafə ver */
 }
     h1 {
       font-size:28px;
