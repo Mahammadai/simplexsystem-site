@@ -29,15 +29,12 @@
   /* istəsən ölçünü daha sabit saxlayım: */
   /* min-height: 520px; */
 }
-
-/* LOQO — kartın içində böyük və proporsional */
-.logo img{
-  width: clamp(400px, 68%, 560px);            /* MƏQSƏD: iri görünsün */
-  height: auto;
-  max-height: 150px;                          /* çox böyüməsin */
-  object-fit: contain;                        /* nisbət qalsın, təhrif olmasın */
+.logo img {
+  width: 70%;              /* kartın 70%-i qədər böyüsün */
+  max-width: 280px;        /* maksimum limit */
+  height: auto;            /* nisbət qorunsun */
   display: block;
-  margin: 0 auto 24px;
+  margin: 0 auto 32px;     /* mərkəzləşdir və yazılardan məsafə ver */
 }
     h1 {
       font-size:28px;
