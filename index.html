@@ -1,107 +1,122 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simplex System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --brand:#27DEBF; --ink:#ffffff; --bg1:#1ddbb6; --bg2:#3b82f6; --bg3:#6366f1; }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--ink);
-      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-      display:flex; align-items:center; justify-content:center; padding:16px;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #00c6ff, #5b2be0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .card{
-      background: rgba(0,0,0,.75);
+    .card {
+      background: #0d1b2a;
+      padding: 40px;
       border-radius: 20px;
-      padding: 40px 32px;
       text-align: center;
-      width: min(560px, 95vw);
-      box-shadow: 0 12px 32px rgba(0,0,0,.45);
+      color: white;
+      max-width: 480px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
-    .logo img{height:120px; width:auto; margin-bottom:20px; display:block; margin-inline:auto;}
-    h1{font-size:30px; font-weight:700; margin:0 0 8px}
-    h2{font-size:24px; font-weight:500; margin:0 0 20px}
-    p.lead{font-size:16px; opacity:.8; margin:0 0 22px}
-    .btn{
-      display:inline-block; padding:12px 22px; border-radius:10px; border:0;
-      background:#00d4aa; color:#001d17; font-weight:700; cursor:pointer;
-      box-shadow:0 10px 22px rgba(0,212,170,.45); transition:.2s transform;
+    .logo img {
+      width: 140px;
+      margin-bottom: 20px;
     }
-    .btn:hover{transform:translateY(-1px)}
-    .email{margin-top:18px; color:#27DEBF; font-weight:700; cursor:pointer; user-select:all}
-    .email:hover{text-decoration:underline}
-
-    /* Centered toast */
-    #toast{
-      position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.98);
-      min-width: 260px; max-width: 90vw;
-      background: #0b1620; color:#eafaf7; border:1px solid #153247;
-      padding: 14px 18px; border-radius: 12px; text-align:center; z-index: 1000;
-      box-shadow: 0 14px 36px rgba(0,0,0,.45);
-      visibility: hidden; opacity: 0; transition: opacity .25s, transform .25s;
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      text-transform: none; /* i hərfi normal qalsın */
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 400;
+      margin: 0 0 16px;
+      color: #ccc;
+    }
+    p {
       font-size: 15px;
+      margin-bottom: 24px;
+      color: #aaa;
     }
-    #toast.show{visibility: visible; opacity: 1; transform: translate(-50%, -50%) scale(1)}
-    /* Optional subtle backdrop */
-    #backdrop{
-      position: fixed; inset: 0; background: rgba(0,0,0,.25); backdrop-filter: blur(2px);
-      visibility: hidden; opacity: 0; transition: opacity .2s; z-index: 999;
+    .btn {
+      display: inline-block;
+      background: #00c896;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      cursor: pointer;
     }
-    #backdrop.show{visibility: visible; opacity: 1}
-
-    @media (max-width: 768px){
-      .logo img{height:80px}
-      h1{font-size:24px}
-      h2{font-size:18px}
-      p.lead{font-size:14px}
+    .btn:hover {
+      background: #00e6ac;
+    }
+    .email {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #00ffcc;
+      cursor: pointer;
+    }
+    .email:hover {
+      text-decoration: underline;
+    }
+    /* Toast */
+    .toast {
+      visibility: hidden;
+      min-width: 280px;
+      background-color: #00c896;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 16px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.5s, visibility 0.5s;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <main class="card" role="main" aria-label="Simplex System teaser">
-    <div class="logo"><img src="/img/logo.png" alt="Simplex System Logo"></div>
+  <div class="card">
+    <div class="logo">
+      <img src="logo.png" alt="Simplex System Logo">
+    </div>
     <h1>Xəstəxana idarəetməsi</h1>
     <h2>üçün yeni dövr başlayır</h2>
-    <p class="lead">Gələcək buradadır — sadəcə gözləyin.</p>
-
-    <button class="btn" type="button" onclick="showToast()">İlk xəbərdar ol</button>
-    <div class="email" id="email">office@simplexsystem.az</div>
-  </main>
-
-  <!-- Centered toast + backdrop -->
-  <div id="backdrop" aria-hidden="true"></div>
-  <div id="toast" role="status" aria-live="polite">
-    🚀 Yeni dövr başlayanda ilk siz eşidəcəksiniz.
+    <p>Gələcək buradadır — sadəcə gözləyin.</p>
+    <button class="btn" onclick="showToast()">İlk xəbərdar ol</button>
+    <div class="email" onclick="copyEmail()">office@simplexsystem.az</div>
   </div>
 
-  <script>
-    // Email copy
-    document.getElementById('email').addEventListener('click', async (e) => {
-      const text = e.target.textContent.trim();
-      try {
-        await navigator.clipboard.writeText(text);
-        // Kiçik vizual feedback (qısa müddətlik mətn dəyişimi)
-        const original = e.target.textContent;
-        e.target.textContent = 'Kopyalandı ✅';
-        setTimeout(()=> e.target.textContent = original, 1500);
-      } catch {}
-    });
+  <div id="toast" class="toast">🚀 Sizinlə yeni dövrü birlikdə açacağıq!</div>
 
-    // Centered toast
+  <script>
     function showToast() {
-      const toast = document.getElementById('toast');
-      const backdrop = document.getElementById('backdrop');
-      toast.classList.add('show');
-      backdrop.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-        backdrop.classList.remove('show');
-      }, 3000);
+      var toast = document.getElementById("toast");
+      toast.className = "toast show";
+      setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText("office@simplexsystem.az").then(() => {
+        alert("📋 Email kopyalandı!");
+      });
     }
   </script>
 </body>
