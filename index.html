@@ -16,23 +16,16 @@
       justify-content:center;
     }
     .card {
-      background:#0d1b2a;
-      color:#fff;
-      padding:40px;
-      border-radius:20px;
-      text-align:center;
-      max-width:520px;
-      width:92vw;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
+  max-width: 450px;   /* sabit en */
+  min-height: 550px;  /* sabit hündürlük, logo böyüyəndə də kart pozulmur */
+  padding: 40px;
+}
     .logo img {
-  width: 220px;          /* loqonun enini böyütmək üçün dəyəri artır */
-  height: auto;          /* nisbəti qorusun */
-  max-height: 160px;     /* çox böyüməsin */
-  object-fit: contain;   /* şəkil təhrif olunmasın */
-  margin-bottom: 24px;
+  width: 60%;           /* kartın eninin 60%-i qədər loqo olsun */
+  max-width: 300px;     /* həddən artıq böyüməsin */
+  height: auto;         /* nisbəti saxla */
   display: block;
-  margin-inline: auto;
+  margin: 0 auto 24px;  /* ortala və aşağıdan boşluq ver */
 }
     h1 {
       font-size:28px;
