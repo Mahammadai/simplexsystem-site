@@ -6,9 +6,6 @@
   <title>Simplex System — Texniki Baxım</title>
   <meta name="description" content="Simplex System saytında hazırda texniki baxım və yenilənmələr aparılır." />
   <link rel="icon" href="https://bimi-logo-49q.pages.dev/logo.svg" />
-  <meta property="og:title" content="Simplex System — Texniki Baxım" />
-  <meta property="og:description" content="Saytımızda yenilikçi təkmilləşdirmələr üzərində işləyirik. Tezliklə geri dönəcəyik." />
-  <meta property="og:image" content="https://bimi-logo-49q.pages.dev/logo.svg" />
   <meta name="theme-color" content="#0ea5e9" />
   <style>
     :root{
@@ -29,24 +26,10 @@
       overflow:hidden;
     }
 
-    /* animated blobs */
-    .blob{position:absolute; filter:blur(60px); opacity:.45; mix-blend-mode:screen}
-    .b1{width:42vmax;height:42vmax; background:#22d3ee; border-radius:50%;
-        left:-10vmax; top:-8vmax; animation:float1 16s ease-in-out infinite;}
-    .b2{width:36vmax;height:36vmax; background:#f472b6; border-radius:50%;
-        right:-8vmax; top:-6vmax; animation:float2 18s ease-in-out infinite;}
-    .b3{width:28vmax;height:28vmax; background:#a78bfa; border-radius:50%;
-        left:10vmax; bottom:-10vmax; animation:float3 20s ease-in-out infinite;}
-    @keyframes float1{50%{transform:translate(5vmax,4vmax) scale(1.05)}}
-    @keyframes float2{50%{transform:translate(-4vmax,3vmax) scale(1.08)}}
-    @keyframes float3{50%{transform:translate(2vmax,-3vmax) scale(1.06)}}
-
-    .wrap{
-      position:relative; z-index:2; height:100%; display:grid; place-items:center; padding:24px;
-    }
-
+    /* glass card */
+    .wrap{position:relative; z-index:2; height:100%; display:grid; place-items:center; padding:24px}
     .card{
-      width:min(860px,92vw); padding:32px 28px; border-radius:24px;
+      width:min(960px,92vw); padding:32px 28px; border-radius:28px;
       background:linear-gradient( to bottom, #ffffffee, #ffffffcc );
       box-shadow: 0 10px 40px rgba(3,7,18,.25), inset 0 1px 0 rgba(255,255,255,.4);
       backdrop-filter: blur(12px);
@@ -57,38 +40,40 @@
 
     .head{display:flex; gap:16px; align-items:center; flex-wrap:wrap}
     .logo{
-      width:56px; height:56px; border-radius:16px; display:grid; place-items:center;
+      width:64px; height:64px; border-radius:18px; display:grid; place-items:center;
       background: radial-gradient(80% 80% at 50% 20%, #fff, #e2f1ff);
       box-shadow: 0 6px 18px rgba(14,165,233,.35);
+      flex:0 0 auto;
     }
-    .logo img{width:38px; height:38px}
+    .logo img{width:42px; height:42px}
 
     .title{line-height:1.1; margin:0}
-    .title h1{margin:0; font-size:clamp(22px,4vw,30px)}
-    .title p{margin:4px 0 0; color:var(--muted)}
-
-    .body{margin-top:18px; display:grid; gap:18px}
+    .title h1{margin:0; font-size:clamp(24px,4vw,34px)}
+    .title p{margin:6px 0 0; color:var(--muted)}
 
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; border-radius:999px; font-size:14px;
+      margin-left:auto;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border-radius:999px; font-size:14px;
       background:linear-gradient(to right, #e6f7ff, #f1f5ff);
       border:1px solid #e6eefc;
+      white-space:nowrap;
     }
-    .dot{width:8px;height:8px;border-radius:50%;background:#10b981; box-shadow:0 0 0 6px #10b98122}
+    .dot{width:10px;height:10px;border-radius:50%;background:#10b981; box-shadow:0 0 0 6px #10b98122}
 
-    .msg{font-size:clamp(14px,2.2vw,16px); color:#2b3343}
+    .body{margin-top:18px; display:grid; gap:18px}
+    .msg{font-size:clamp(15px,2.1vw,18px); color:#2b3343}
     .list{margin:0; padding-left:18px; color:#445066}
 
     /* progress bar */
-    .progress{height:10px; width:100%; background:#eef2ff; border-radius:999px; overflow:hidden; border:1px solid #e5e7eb}
+    .progress{height:12px; width:100%; background:#eef2ff; border-radius:999px; overflow:hidden; border:1px solid #e5e7eb}
     .bar{height:100%; width:0%; background:linear-gradient(90deg,#22d3ee,#0ea5e9 60%,#4338ca);
-         animation:load 5s ease-in-out infinite}
+         animation:load 6s ease-in-out infinite}
     @keyframes load{
       0%{width:8%} 40%{width:62%} 70%{width:84%} 100%{width:92%}
     }
 
-    /* footer actions */
+    /* actions */
     .actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
     .btn{
       appearance:none; border:none; cursor:pointer; padding:12px 16px; border-radius:12px;
@@ -102,30 +87,90 @@
     .btn.ghost{background:#ffffff; border:1px solid #e6eaf5; color:#334155}
     .hint{color:#667085; font-size:12px}
 
-    /* ticker */
+    /* ticker & chips */
     .ticker{
-      margin-top:10px; font-size:12px; color:#5b657a;
+      margin-top:6px; font-size:12px; color:#5b657a;
       display:flex; gap:10px; align-items:center; white-space:nowrap; overflow:hidden;
       mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
     }
     .ticker span{display:inline-block; padding:4px 10px; border-radius:999px; background:#f8fafc; border:1px solid #eef2f7}
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+    .chip{
+      display:inline-block; padding:6px 12px; border-radius:999px;
+      background:#f8fafc; border:1px solid #eef2f7; font-size:12px; color:#5b657a
+    }
 
-    @media (max-width:520px){
+    /* BACKGROUND ICONS (HIS/LIS/PACS) */
+    .bg-icons{position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.28}
+    .icon{position:absolute; width:70px; height:70px; fill:#ffffff; filter:drop-shadow(0 10px 20px rgba(0,0,0,.15))}
+    .i1{left:6%; top:14%; animation:floatA 14s ease-in-out infinite}
+    .i2{left:18%; top:70%; animation:floatB 18s ease-in-out infinite}
+    .i3{left:50%; top:10%; animation:floatC 16s ease-in-out infinite}
+    .i4{right:10%; top:26%; animation:floatA 19s ease-in-out infinite reverse}
+    .i5{right:16%; bottom:14%; animation:floatB 17s ease-in-out infinite}
+    .i6{left:44%; bottom:8%; animation:floatC 21s ease-in-out infinite reverse}
+    @keyframes floatA{50%{transform:translate(12px, -8px) rotate(6deg) scale(1.06)}}
+    @keyframes floatB{50%{transform:translate(-10px, 10px) rotate(-5deg) scale(1.05)}}
+    @keyframes floatC{50%{transform:translate(8px, 6px) rotate(4deg) scale(1.07)}}
+
+    /* soft blobs behind icons */
+    .blob{position:absolute; filter:blur(70px); opacity:.40; mix-blend-mode:screen}
+    .b1{width:42vmax;height:42vmax; background:#22d3ee; border-radius:50%;
+        left:-10vmax; top:-8vmax; animation:blob1 16s ease-in-out infinite;}
+    .b2{width:36vmax;height:36vmax; background:#f472b6; border-radius:50%;
+        right:-8vmax; top:-6vmax; animation:blob2 18s ease-in-out infinite;}
+    .b3{width:28vmax;height:28vmax; background:#a78bfa; border-radius:50%;
+        left:10vmax; bottom:-10vmax; animation:blob3 20s ease-in-out infinite;}
+    @keyframes blob1{50%{transform:translate(5vmax,4vmax) scale(1.05)}}
+    @keyframes blob2{50%{transform:translate(-4vmax,3vmax) scale(1.08)}}
+    @keyframes blob3{50%{transform:translate(2vmax,-3vmax) scale(1.06)}}
+
+    @media (max-width:620px){
       .card{padding:22px 18px}
-      .logo{width:48px;height:48px}.logo img{width:34px;height:34px}
+      .logo{width:54px;height:54px}.logo img{width:36px;height:36px}
+      .pill{margin-left:0}
+      .icon{width:52px;height:52px}
     }
   </style>
 </head>
 <body>
+  <!-- soft ambient blobs -->
   <div class="blob b1"></div>
   <div class="blob b2"></div>
   <div class="blob b3"></div>
+
+  <!-- BACKGROUND ICONS (inline SVG symbols + positioned uses) -->
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="ic-flask" viewBox="0 0 24 24">
+      <path d="M9 3h6v2l-1 1v4.26l4.9 7.35A3 3 0 0 1 16.3 21H7.7a3 3 0 0 1-2.6-3.39L10 10.26V6L9 5V3zm1.7 9.5L8.2 16h7.6l-2.5-3.5h-2.6z"/>
+    </symbol>
+    <symbol id="ic-xray" viewBox="0 0 24 24">
+      <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5zm3 3h10v2H7V8zm0 4h10v2H7v-2zm0 4h6v2H7v-2z"/>
+    </symbol>
+    <symbol id="ic-db" viewBox="0 0 24 24">
+      <path d="M12 3c4.97 0 9 1.34 9 3v12c0 1.66-4.03 3-9 3s-9-1.34-9-3V6c0-1.66 4.03-3 9-3zm0 2C8.14 5 5 5.9 5 7s3.14 2 7 2 7-.9 7-2-3.14-2-7-2zm0 5c-3.86 0-7-.9-7-2v3c0 1.1 3.14 2 7 2s7-.9 7-2V8c0 1.1-3.14 2-7 2zm0 5c-3.86 0-7-.9-7-2v3c0 1.1 3.14 2 7 2s7-.9 7-2v-3c0 1.1-3.14 2-7 2z"/>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 24 24">
+      <path d="M12 2l8 4v6c0 5-3.5 9.74-8 10-4.5-.26-8-5-8-10V6l8-4zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+    </symbol>
+    <symbol id="ic-heart" viewBox="0 0 24 24">
+      <path d="M12.1 21.35l-1.1-1.02C5.14 15.24 2 12.36 2 8.98 2 6.24 4.24 4 6.98 4c1.54 0 3.04.74 4.02 1.9A5.3 5.3 0 0 1 15.02 4C17.76 4 20 6.24 20 8.98c0 3.38-3.14 6.26-8.9 11.35z"/>
+    </symbol>
+  </svg>
+  <div class="bg-icons" aria-hidden="true">
+    <svg class="icon i1"><use href="#ic-flask"/></svg>   <!-- LIS -->
+    <svg class="icon i2"><use href="#ic-xray"/></svg>    <!-- PACS -->
+    <svg class="icon i3"><use href="#ic-db"/></svg>      <!-- DB/HIS -->
+    <svg class="icon i4"><use href="#ic-heart"/></svg>   <!-- vitals -->
+    <svg class="icon i5"><use href="#ic-shield"/></svg>  <!-- security -->
+    <svg class="icon i6"><use href="#ic-flask"/></svg>   <!-- LIS (daha biri) -->
+  </div>
 
   <main class="wrap" role="main" aria-label="Maintenance panel">
     <section class="card" aria-live="polite">
       <header class="head">
         <div class="logo" aria-hidden="true">
-          <img src="https://bimi-logo-49q.pages.dev/logo.svg" alt="">
+          <img src="https://bimi-logo-49q.pages.dev/logo.svg" alt="Simplex System">
         </div>
         <div class="title">
           <h1>Simplex System</h1>
@@ -144,9 +189,9 @@
         </p>
 
         <ul class="list">
-          <li>Performans: keş, CDN və görüntü optimizasiyası</li>
-          <li>Təhlükəsizlik: SPF/DKIM/DMARC + BIMI qəbul edilib</li>
-          <li>UI/UX: daha təmiz panel və mobil uyğunluq</li>
+          <li>🧪 Tibbi cihazlarla avtomatik inteqrasiya</li>
+          <li>🩺 Həkim performans statistikası</li>
+          <li>📊 Rəhbərlik üçün analitik hesabatlar</li>
         </ul>
 
         <div class="progress" aria-label="İrəliləmə göstəricisi">
@@ -158,28 +203,47 @@
           <a class="btn ghost" href="mailto:office@simplexsystem.az?subject=[Status]%20Bildirişlərə%20qoşulmaq">
             Status bildirişləri
           </a>
-          <span class="hint">Əlaqə: office@simplexsystem.az</span>
+          <span class="hint">Əlaqə: office@simplexsystem.az • <span id="ts">Son yeniləmə</span></span>
         </div>
 
-        <div class="ticker" aria-hidden="true">
-          <span>HBYS inteqrasiyaları</span>
-          <span>LIS modulları</span>
-          <span>Oracle PL/SQL optimizasiyası</span>
-          <span>Dashboard &amp; PDF eksport</span>
-          <span>Security hardening</span>
+        <!-- Marquee tipli “innovativ” başlıqlar -->
+       <div class="ticker" aria-hidden="true">
+  <span>⚡ Sürətli laborator nəticələr</span>
+  <span>🧪 Tibbi cihazlarla avtomatik inteqrasiya</span>
+  <span>📲 SMS / WhatsApp ilə xəstə bildirişləri</span>
+  <span>🧠 Xəstəlik risklərinin proqnozu</span>
+  <span>🗂️ Həkim / laboratoriya / admin üçün fərqli panellər</span>
+  <span>🧰 Sadə formalar yaratmaq imkanı</span>
+  <span>🌙 Mobil və “dark mode” uyğunluğu</span>
+  <span>📝 Tam audit və izləmə jurnalı</span>
+  <span>🖨️ Avtomatik PDF / Excel çıxarışı</span>
+</div>
+
+        <!-- Statik “chips” sırası -->
+        <div class="chips" role="list" aria-label="İmkanlar">
+          <span class="chip" role="listitem">HBYS inteqrasiyaları</span>
+          <span class="chip" role="listitem">LIS modulları</span>
+          <span class="chip" role="listitem">Oracle PL/SQL optimizasiyası</span>
+          <span class="chip" role="listitem">Dashboard &amp; PDF eksport</span>
+          <span class="chip" role="listitem">Security hardening</span>
+          <span class="chip" role="listitem">AI interpretasiya</span>
+          <span class="chip" role="listitem">HL7/ASTM cihaz bağlanışı</span>
+          <span class="chip" role="listitem">E-imza</span>
+          <span class="chip" role="listitem">ML risk skoru</span>
+          <span class="chip" role="listitem">No-code form builder</span>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Kiçik JS: saat-stamp (opsional) -->
   <script>
+    // Son yeniləmə timestamp
     (function(){
-      const p = document.querySelector('.hint');
-      if(!p) return;
+      const el = document.getElementById('ts');
+      if(!el) return;
       const now = new Date();
       const fmt = new Intl.DateTimeFormat('az-AZ', { dateStyle:'medium', timeStyle:'short' });
-      p.textContent = `Əlaqə: office@simplexsystem.az • Son yeniləmə: ` + fmt.format(now);
+      el.textContent = 'Son yeniləmə: ' + fmt.format(now);
     })();
   </script>
 </body>
