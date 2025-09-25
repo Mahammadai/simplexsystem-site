@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simplex System — Texniki Baxım</title>
+  <meta name="description" content="Simplex System saytında hazırda texniki baxım və yenilənmələr aparılır." />
+  <link rel="icon" href="https://bimi-logo-49q.pages.dev/logo.svg" />
+  <meta property="og:title" content="Simplex System — Texniki Baxım" />
+  <meta property="og:description" content="Saytımızda yenilikçi təkmilləşdirmələr üzərində işləyirik. Tezliklə geri dönəcəyik." />
+  <meta property="og:image" content="https://bimi-logo-49q.pages.dev/logo.svg" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root{
+      --bg1:#0ea5e9;      /* sky-500 */
+      --bg2:#4338ca;      /* indigo-700 */
+      --glass:#ffffffcc;  /* glass white */
+      --ink:#0b1220;      /* dark text */
+      --muted:#5b657a;    /* secondary text */
+      --accent:#22d3ee;   /* cyan-400 */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 10% 10%, #22d3ee22, transparent 60%),
+                  radial-gradient(900px 600px at 90% 20%, #f472b622, transparent 55%),
+                  linear-gradient(135deg,var(--bg1),var(--bg2));
+      overflow:hidden;
+    }
+
+    /* animated blobs */
+    .blob{position:absolute; filter:blur(60px); opacity:.45; mix-blend-mode:screen}
+    .b1{width:42vmax;height:42vmax; background:#22d3ee; border-radius:50%;
+        left:-10vmax; top:-8vmax; animation:float1 16s ease-in-out infinite;}
+    .b2{width:36vmax;height:36vmax; background:#f472b6; border-radius:50%;
+        right:-8vmax; top:-6vmax; animation:float2 18s ease-in-out infinite;}
+    .b3{width:28vmax;height:28vmax; background:#a78bfa; border-radius:50%;
+        left:10vmax; bottom:-10vmax; animation:float3 20s ease-in-out infinite;}
+    @keyframes float1{50%{transform:translate(5vmax,4vmax) scale(1.05)}}
+    @keyframes float2{50%{transform:translate(-4vmax,3vmax) scale(1.08)}}
+    @keyframes float3{50%{transform:translate(2vmax,-3vmax) scale(1.06)}}
+
+    .wrap{
+      position:relative; z-index:2; height:100%; display:grid; place-items:center; padding:24px;
+    }
+
+    .card{
+      width:min(860px,92vw); padding:32px 28px; border-radius:24px;
+      background:linear-gradient( to bottom, #ffffffee, #ffffffcc );
+      box-shadow: 0 10px 40px rgba(3,7,18,.25), inset 0 1px 0 rgba(255,255,255,.4);
+      backdrop-filter: blur(12px);
+      border:1px solid rgba(255,255,255,.6);
+      animation:pop .6s ease-out both;
+    }
+    @keyframes pop{from{transform:translateY(8px) scale(.98); opacity:0}to{transform:none; opacity:1}}
+
+    .head{display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+    .logo{
+      width:56px; height:56px; border-radius:16px; display:grid; place-items:center;
+      background: radial-gradient(80% 80% at 50% 20%, #fff, #e2f1ff);
+      box-shadow: 0 6px 18px rgba(14,165,233,.35);
+    }
+    .logo img{width:38px; height:38px}
+
+    .title{line-height:1.1; margin:0}
+    .title h1{margin:0; font-size:clamp(22px,4vw,30px)}
+    .title p{margin:4px 0 0; color:var(--muted)}
+
+    .body{margin-top:18px; display:grid; gap:18px}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; font-size:14px;
+      background:linear-gradient(to right, #e6f7ff, #f1f5ff);
+      border:1px solid #e6eefc;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:#10b981; box-shadow:0 0 0 6px #10b98122}
+
+    .msg{font-size:clamp(14px,2.2vw,16px); color:#2b3343}
+    .list{margin:0; padding-left:18px; color:#445066}
+
+    /* progress bar */
+    .progress{height:10px; width:100%; background:#eef2ff; border-radius:999px; overflow:hidden; border:1px solid #e5e7eb}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg,#22d3ee,#0ea5e9 60%,#4338ca);
+         animation:load 5s ease-in-out infinite}
+    @keyframes load{
+      0%{width:8%} 40%{width:62%} 70%{width:84%} 100%{width:92%}
+    }
+
+    /* footer actions */
+    .actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .btn{
+      appearance:none; border:none; cursor:pointer; padding:12px 16px; border-radius:12px;
+      font-weight:600; font-size:14px; transition:transform .08s ease, box-shadow .2s ease;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg,#22d3ee,#0ea5e9);
+      color:#002133; box-shadow:0 8px 22px rgba(14,165,233,.35);
+    }
+    .btn.primary:hover{transform:translateY(-1px)}
+    .btn.ghost{background:#ffffff; border:1px solid #e6eaf5; color:#334155}
+    .hint{color:#667085; font-size:12px}
+
+    /* ticker */
+    .ticker{
+      margin-top:10px; font-size:12px; color:#5b657a;
+      display:flex; gap:10px; align-items:center; white-space:nowrap; overflow:hidden;
+      mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+    }
+    .ticker span{display:inline-block; padding:4px 10px; border-radius:999px; background:#f8fafc; border:1px solid #eef2f7}
+
+    @media (max-width:520px){
+      .card{padding:22px 18px}
+      .logo{width:48px;height:48px}.logo img{width:34px;height:34px}
+    }
+  </style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <main class="wrap" role="main" aria-label="Maintenance panel">
+    <section class="card" aria-live="polite">
+      <header class="head">
+        <div class="logo" aria-hidden="true">
+          <img src="https://bimi-logo-49q.pages.dev/logo.svg" alt="">
+        </div>
+        <div class="title">
+          <h1>Simplex System</h1>
+          <p>Yenilikçi təkmilləşdirmələr üzərində işləyirik ⚙️</p>
+        </div>
+        <span class="pill" title="Baxım rejimi aktivdir">
+          <span class="dot" aria-hidden="true"></span> Texniki baxım aktivdir
+        </span>
+      </header>
+
+      <div class="body">
+        <p class="msg">
+          Saytımızda hazırda <b>texniki baxım və modernləşdirmə</b> işləri aparılır.
+          Daha sürətli, daha təhlükəsiz və funksional təcrübə üçün interfeysi yeniləyirik.
+          Tezliklə geri dönəcəyik!
+        </p>
+
+        <ul class="list">
+          <li>Performans: keş, CDN və görüntü optimizasiyası</li>
+          <li>Təhlükəsizlik: SPF/DKIM/DMARC + BIMI qəbul edilib</li>
+          <li>UI/UX: daha təmiz panel və mobil uyğunluq</li>
+        </ul>
+
+        <div class="progress" aria-label="İrəliləmə göstəricisi">
+          <div class="bar"></div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="mailto:office@simplexsystem.az">Bizə yazın</a>
+          <a class="btn ghost" href="mailto:office@simplexsystem.az?subject=[Status]%20Bildirişlərə%20qoşulmaq">
+            Status bildirişləri
+          </a>
+          <span class="hint">Əlaqə: office@simplexsystem.az</span>
+        </div>
+
+        <div class="ticker" aria-hidden="true">
+          <span>HBYS inteqrasiyaları</span>
+          <span>LIS modulları</span>
+          <span>Oracle PL/SQL optimizasiyası</span>
+          <span>Dashboard &amp; PDF eksport</span>
+          <span>Security hardening</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Kiçik JS: saat-stamp (opsional) -->
+  <script>
+    (function(){
+      const p = document.querySelector('.hint');
+      if(!p) return;
+      const now = new Date();
+      const fmt = new Intl.DateTimeFormat('az-AZ', { dateStyle:'medium', timeStyle:'short' });
+      p.textContent = `Əlaqə: office@simplexsystem.az • Son yeniləmə: ` + fmt.format(now);
+    })();
+  </script>
+</body>
+</html>
