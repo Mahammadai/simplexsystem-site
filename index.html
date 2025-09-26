@@ -17,9 +17,15 @@
     }
    .card {
   width: min(560px, 92vw);
-  padding: 16px 24px 32px; /* Eskiden 28px 24px 32px idi. Üst boşluk (16px) azaltıldı. */
-  border-radius: 20px;
-  /* ... devamı ... */
+  padding: 16px 24px 32px; /* Dikey boşluğu korumak için 16px bıraktık */
+  border-radius: 12px;
+  /* KAYBOLAN KISIMLARI BURAYA EKLEYİN */
+  background: rgba(13, 27, 42, .92); /* Koyu Arka Plan Rengi */
+  border: 1px solid rgba(255,255,255,.05); /* İnce Kenarlık */
+  box-shadow: 0 18px 48px rgba(0,0,0,.35); /* Gölge Efekti */
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
 }
 .logo img {
   width: 90%;            /* Kartın %90'ı kadar yer kaplasın (Büyüttük!) */
